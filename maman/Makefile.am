@@ -1,17 +1,22 @@
 # preamble
 
-EXTRA_DIST=
-BUILT_SOURCES=
-DISTCLEANFILES=
-CLEANFILES=
-lib_LTLIBRARIES=
-NULL=
+NULL =
+AM_CPPFLAGS =
+AM_CFLAGS =
+BUILT_SOURCES =
+CLEANFILES =
+EXTRA_DIST =
+DISTCLEANFILES =
+lib_LTLIBRARIES =
+bin_PROGRAMS =
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	$(GOBJECT_CFLAGS) \
 	$(NULL)
 
-AM_CFLAGS = -std=gnu99 -Wall
+AM_CFLAGS += \
+	$(MAMAN_CFLAGS) \
+	$(NULL)
 
 source_h = \
 	$(top_srcdir)/maman/maman-bar.h \

@@ -14,11 +14,21 @@ AC_PROG_INSTALL
 # Checks for libraries
 PKG_CHECK_MODULES([GOBJECT], [gobject-2.0 >= 2.38])
 
+# Checks for typedefs, structures, and compiler characteristics
+AC_PROG_CC_STDC
+
+# Compiler flags
+MAMAN_CFLAGS="-Wall"
+
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AM_PROG_AR
 LT_INIT
 
+# Introspection
 GOBJECT_INTROSPECTION_CHECK([1.38.0])
+
+# Output
+AC_SUBST(MAMAN_CFLAGS)
 
 AC_CONFIG_FILES([Makefile maman/Makefile])
 
