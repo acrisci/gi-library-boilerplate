@@ -16,7 +16,7 @@ Run `autogen.sh` to initialize the build system and configure the project. Then 
 
 To set up a development environment for the bindings, set these environment variables:
 
-```
+```sh
 export GI_TYPELIB_PATH=/path/to/gi-library-boilerplate/maman:$GI_TYPELIB_PATH
 export LD_LIBRARY_PATH=/path/to/gi-library-boilerplate/maman/.libs:$LD_LIBRARY_PATH
 ```
@@ -24,13 +24,17 @@ export LD_LIBRARY_PATH=/path/to/gi-library-boilerplate/maman/.libs:$LD_LIBRARY_P
 Then with the [PyGObject](https://wiki.gnome.org/action/show/Projects/PyGObject) module available, the library can be accessed like this:
 
 ```python
+#!/usr/bin/env python3
+
 from gi.repository import Maman
 
 # Create a new object
 bar = Maman.Bar()
 
 # Say hello to bar
-bar.speak('Hello, world!')
+words = bar.speak('Hello, world!')
+
+print(words)
 ```
 
 ## License
