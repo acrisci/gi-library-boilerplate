@@ -8,6 +8,8 @@ This is a complete, minimal example of an introspectable library based on the [G
 
 It notably includes a working [autotools](https://en.wikipedia.org/wiki/GNU_build_system) build system that creates a [gir](https://developer.gnome.org/gi/stable/) and typelib to expose bindings to scripting languages.
 
+For a complete explanation of this project, see the [blog post](http://dubstepdish.com/blog/2014/02/12/gobject-introspection-build-system-example/) I wrote about it.
+
 ## Installing
 
 Run `autogen.sh` to initialize the build system and configure the project. Then run `make` and the project will build in the `maman` directory.
