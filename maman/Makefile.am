@@ -11,7 +11,7 @@ lib_LTLIBRARIES =
 bin_PROGRAMS =
 
 AM_CPPFLAGS += \
-	$(GOBJECT_CFLAGS) \
+	$(MAMAN_CFLAGS) \
 	$(NULL)
 
 AM_CFLAGS += \
@@ -27,8 +27,13 @@ source_c = \
 	$(NULL)
 
 lib_LTLIBRARIES += libmaman-1.0.la
-libmaman_1_0_la_LIBADD = $(GOBJECT_LIBS)
+libmaman_1_0_la_LIBADD = $(MAMAN_LIBS)
 libmaman_1_0_la_SOURCES = $(source_c) $(source_h)
+
+mamanincludedir = $(includedir)/maman
+mamaninclude_DATA = \
+	$(source_h) \
+	$(NULL)
 
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Maman_1_0_gir
