@@ -1,22 +1,29 @@
 #include "maman-bar.h"
 
-struct _MamanBarPrivate
+// private members go in this structure
+struct _MamanBar
 {
+  GObject parent_instance;
+
   gint hsize;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (MamanBar, maman_bar, G_TYPE_OBJECT)
+// implement MamanBar as a child of GObject
+G_DEFINE_TYPE (MamanBar, maman_bar, G_TYPE_OBJECT)
 
-static void
-maman_bar_class_init (MamanBarClass *klass)
-{
-}
-
+// instance initialization
 static void
 maman_bar_init (MamanBar *self)
 {
-  self->priv = maman_bar_get_instance_private (self);
-  self->priv->hsize = 42;
+  /* initialize all public and private members to reasonable default values.
+   * They are all automatically initialized to 0 to begin with. */
+  self->hsize = 42;
+}
+
+// class initialization
+static void
+maman_bar_class_init (MamanBarClass *klass)
+{
 }
 
 /**
@@ -44,7 +51,7 @@ maman_bar_new (void)
  *
  */
 gchar *
-maman_bar_speak (gchar *words)
+maman_bar_speak (MamanBar* self, gchar *words)
 {
   gchar *retval;
 
