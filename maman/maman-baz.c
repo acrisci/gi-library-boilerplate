@@ -82,10 +82,10 @@ maman_baz_get_property (GObject    *object,
 static void
 maman_baz_do_handle_frob (MamanBaz *self, guint n_frobs)
 {
-  g_print("This implements a virtual  method handle_frob(): 0x%x", n_frobs);
+  g_print("This implements a virtual  method handle_frob(): 0x%x\n", n_frobs);
 
   // let's also emit a signal
-  g_signal_emit(self, signals[SIG_CHANGED], n_frobs);
+  g_signal_emit(self, signals[SIG_CHANGED], 0, n_frobs);
 }
 
 // class initialization: we
@@ -151,5 +151,15 @@ maman_baz_init (MamanBaz *self)
 
   priv->instance_member = 0xdecafbad;
 }
+
+// Links the public method function to internal class implementation pointer
+void
+maman_baz_handle_frob(MamanBaz *self, guint n_frobs)
+{
+  g_return_if_fail (MAMAN_IS_BAZ (self));
+
+  MAMAN_BAZ_GET_CLASS (self)->handle_frob (self, n_frobs);
+}
+
 
 
