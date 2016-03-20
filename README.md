@@ -10,6 +10,19 @@ It notably includes a working [autotools](https://en.wikipedia.org/wiki/GNU_buil
 
 For a complete explanation of this project, see the [blog post](http://dubstepdish.com/blog/2014/02/12/gobject-introspection-build-system-example/) I wrote about it.
 
+## Source code
+
+This project contains three definitions:
+
+1) A simple class called MamanBar that is final (i.e. cannot be derived
+from) and has one public method and some internal state.
+
+2) A non-instantiable interface called MamanIbaz which specifies two methods and one
+property.
+
+3) A derivable (can be subclassed) class called MamanBaz which
+implements the above interface, and also adds a virtual method and a signal.
+
 ## Installing
 
 Run `autogen.sh` to initialize the build system and configure the project. Then run `make` and the project will build in the `maman` directory.
@@ -37,6 +50,29 @@ bar = Maman.Bar()
 words = bar.speak('Hello, world!')
 
 print(words)
+
+# Ibaz is an interface which cannot be instantiated
+# ibaz = Maman.Ibaz()
+# NotImplementedError: Ibaz can not be constructed
+
+
+# But we can instantiate an implementation of it
+baz = Maman.Baz()
+
+# And call methods that are defined  in the interface
+baz.do_action()
+
+# And also set and get properties
+baz.set_property("name","papan")
+print (baz.get_property("name"))
+
+# Connect to a signal
+baz.connect("changed",lambda baz, frobs: print ("signal received from %s: %d" % (baz, frobs)))
+
+# And make a call that will trigger the signal:
+# signal received from <Baz object at 0x7f41a121f1f8 (MamanBaz at 0x26376d0)>: 42
+baz.handle_frob(42)
+
 ```
 
 ## License

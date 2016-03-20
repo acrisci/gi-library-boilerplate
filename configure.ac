@@ -18,7 +18,7 @@ AC_PROG_CC
 AC_PROG_INSTALL
 
 # Checks for libraries
-PKG_CHECK_MODULES([GOBJECT], [gobject-2.0 >= 2.38])
+PKG_CHECK_MODULES([GOBJECT], [gobject-2.0 >= 2.44])
 
 # Checks for typedefs, structures, and compiler characteristics
 AC_PROG_CC_STDC

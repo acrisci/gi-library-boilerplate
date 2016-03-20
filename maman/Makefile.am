@@ -20,10 +20,14 @@ AM_CFLAGS += \
 
 source_h = \
 	$(top_srcdir)/maman/maman-bar.h \
+	$(top_srcdir)/maman/maman-ibaz.h \
+	$(top_srcdir)/maman/maman-baz.h \
 	$(NULL)
 
 source_c = \
 	maman-bar.c \
+	maman-ibaz.c \
+	maman-baz.c \
 	$(NULL)
 
 lib_LTLIBRARIES += libmaman-1.0.la
